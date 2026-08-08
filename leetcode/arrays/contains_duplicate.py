@@ -1,43 +1,31 @@
 def contains_duplicate(nums):
+    """
+    Given an integer array nums,
+    return true if any value appears more than once in the array,
+    otherwise return false.
+    """
 
-    seen = set()
+    # hashset approach
 
-    # iterate over every value num in nums array
+    # hashsets only store unique elements, use this to look for duplicates
+    distinct_values = set()
+
+    # iterate over our input array
     for num in nums:
 
-        # check if current value is in hashset
-        if num in seen:
-
-            # duplicate found
+        # check if current value is in our set, if so return True
+        if num in distinct_values:
             return True
 
-        # add value to hashset if not already seen
-        seen.add(num)
+        # add curr element to set
+        distinct_values.add(num)
 
-    # no duplicate found
+    # no duplicates found, return False
     return False
-
-    """ O(N^2) solution
-    
-    input_length = len(nums)
-
-    for i in range(input_length):
-        
-        for j in range(i + 1, input_length):
-            
-            # compare values at i and j
-            if nums[i] == nums[j]:
-                
-                # duplicate has been found
-                return True
-    
-    # no duplicate found
-    return False
-    """
 
 
 def main():
-    test_nums = [1, 2, 3]
+    test_nums = [1, 2, 3, 3, 2]
 
     result_contains_duplicate = contains_duplicate(test_nums)
 
